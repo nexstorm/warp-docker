@@ -27,6 +27,3 @@ if [ ! -f /var/lib/cloudflare-warp/reg.json ]; then
 else
     echo "Warp client already registered, skip registration"
 fi
-
-# start the proxy
-gost $GOST_ARGS
