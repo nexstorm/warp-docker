@@ -10,18 +10,12 @@ RUN apt-get update && \
     apt-get install -y cloudflare-warp && \
     apt-get clean && \
     apt-get autoremove -y && \
-    curl -LO https://github.com/ginuerzh/gost/releases/download/v2.11.2/gost-linux-amd64-2.11.2.gz && \
-    gunzip gost-linux-amd64-2.11.2.gz && \
-    mv gost-linux-amd64-2.11.2 /usr/bin/gost && \
-    chmod +x /usr/bin/gost
 
-# Accept Cloudflare WARP TOS
 RUN mkdir -p /root/.local/share/warp && \
     echo -n 'yes' > /root/.local/share/warp/accepted-tos.txt
-
+xxxxxxxx
 COPY entrypoint.sh /entrypoint.sh
 
-ENV GOST_ARGS="-L :1080"
 ENV WARP_SLEEP=2
 
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \
